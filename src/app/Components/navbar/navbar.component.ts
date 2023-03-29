@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { io } from 'socket.io-client';
 import { socket } from 'src/environments/socket';
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -20,10 +20,16 @@ export class NavbarComponent {
   b6: boolean = false;
   Usuarios = [] as any;
   contador: number = 0;
+  suscripcion?: Subscription;
 
   socketID: any;
   unido: boolean = false;
   ngOnInit(): void {
+    this.getUsuarios();
+    this.suscripcion = this.userService.getUsuarios().pipe(map((response: any) => {
+      console.log(response);
+      this.Usuarios = response;
+    })).subscribe();
     socket.on('connect', () => {
       console.log('Conectado al servidor');
       console.log(socket.id);
@@ -44,11 +50,18 @@ export class NavbarComponent {
 
     socket.on('usuarios', (data) => {
       console.log("Los usuario son: " + data);
-      this.Usuarios.push(data);
-      console.log("Arreglo: " + this.Usuarios.length);
+      console.log("Arreglo: " + data.length);
+
+      if (data.length == 1) {
+        this.b1 = true;
+        this.cd.detectChanges();
+      }
+      if (data.length == 2) {
+        this.b2 = true;
+        this.cd.detectChanges();
+      }
     }
     );
-
   }
 
   monitor1() {
@@ -78,6 +91,13 @@ export class NavbarComponent {
 
   Iniciar() {
     socket.emit('iniciar', { id: socket.id });
+  }
+
+  getUsuarios() {
+    this.userService.getUsuarios().subscribe((response: any) => {
+      console.log(response);
+      this.Usuarios = response;
+    });
   }
 
 }

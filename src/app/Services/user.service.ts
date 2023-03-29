@@ -13,6 +13,13 @@ export class UserService {
   private logearUsuario = environment.apiUrl + '/usuario/login';
   private getUserUrl = environment.apiUrl + '/usuario/monitores';
   private logoutUrl = environment.apiUrl + '/usuario/logout';
+  private obetenerUsuarios = environment.apiUrl + '/usuario/info';
+  private _refresh$ = new Subject<void>();
+
+  get_refresh$() {
+    return this._refresh$;
+  }
+
 
   private userLoggedIn = new Subject<boolean>();
 
@@ -36,6 +43,10 @@ export class UserService {
         retry(3),
         catchError(this.handleError)
       );
+  }
+
+  getUsuarios(): Observable<User[]> {
+    return this.http.get<User[]>(this.obetenerUsuarios).pipe(catchError(this.handleError));
   }
 
   getToken() {
