@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'registro', component: RegistroComponent, title: 'Registro', canActivate: [LoginGuard]},
   { path: 'login', component: LoginComponent, title: 'Login', canActivate: [LoginGuard]},
-  { path: 'barco', component: BarcoComponent, title: 'Barco', canActivate: [AuthGuard]}
+  { path: 'barco', component: BarcoComponent, title: 'Home', canActivate: []}
 ];
 
 @NgModule({

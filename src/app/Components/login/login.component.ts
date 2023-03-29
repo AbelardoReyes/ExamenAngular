@@ -26,6 +26,8 @@ export class LoginComponent {
     if (this.form.valid) {
       this.userService.login(values).subscribe((response: any) => {
         console.log(response);
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/barco']);
       });
       console.log("Formulario valido");
     }
@@ -33,4 +35,6 @@ export class LoginComponent {
       console.log("Formulario no valido");
     }
   }
+
+
 }

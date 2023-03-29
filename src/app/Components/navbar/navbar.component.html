@@ -1,3 +1,4 @@
+
 <nav
   class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900"
 >
@@ -13,12 +14,20 @@
             >Abandonar</a
           >
         </li>
-        <li>
-          <a
-            href="#"
+        <li *ngIf="unido != true">
+          <button type="submit"
+            (click)="unirse()"
             class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >Unirse</a
           >
+            Unirse
+          </button>
+          <li *ngIf="unido == true">
+            <button type="submit"
+              (click)="Iniciar()"
+              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >
+              Start
+            </button>
         </li>
       </ul>
     </div>
@@ -26,8 +35,9 @@
 </nav>
 <div class="container">
   <div class="grid grid-cols-10 pl-96">
-    <div >
-      <button
+    <div>
+      <button (click)="monitor1()" *ngIf="contador>=1"
+      id="1"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
@@ -37,62 +47,66 @@
         </span>
       </button>
     </div>
-    <div >
+    <div>
       <button
+      (click)="monitor2()" *ngIf="b2==true"
+      id="2"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-        Monitor 2
+          Monitor 2
         </span>
       </button>
     </div>
-    <div >
-      <button
+    <div>
+      <button (click)="monitor3()" *ngIf="b3==true"
+      id="3"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-        Monitor 3
+          Monitor 3
         </span>
       </button>
     </div>
-    <div >
-      <button
+    <div>
+      <button (click)="monitor4()" *ngIf="b4==true"
+      id="4"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-        Monitor 4
+          Monitor 4
         </span>
       </button>
     </div>
-    <div >
-      <button
+    <div>
+      <button (click)="monitor5()" *ngIf="b5==true"
+      id="5"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-        Monitor 5
+          Monitor 5
         </span>
       </button>
     </div>
-    <div >
-      <button
+    <div>
+      <button (click)="monitor6()" *ngIf="b6==true"
+      id="6"
         class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
         >
-        Monitor 6
+          Monitor 6
         </span>
       </button>
-    </div>
-
     </div>
   </div>
-
+</div>

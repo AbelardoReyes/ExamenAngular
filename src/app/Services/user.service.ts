@@ -25,6 +25,7 @@ export class UserService {
       );
   }
 
+
   login(user: User): Observable<User> {
     return this.http.post<User>(this.logearUsuario, user).pipe(catchError(this.handleError));
   }
@@ -58,7 +59,7 @@ export class UserService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if(error.status === 0) {
+    if (error.status === 0) {
       console.error('Un error inesperado ha ocurrido:', error.error);
     } else if (error.status === 400) {
       alert('Error: ' + error.error.message);

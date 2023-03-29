@@ -16,9 +16,13 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 export class BarcoComponent implements OnInit {
+  timer = 10;
 
   ngOnInit(): void {
-    const socket = io('http://192.168.1.70:3333');
+    //const socket = io('http://192.168.1.70:3333');
   }
-
+  iniciarAnimacion() {
+    console.log("Iniciando animacion");
+  }
 }
+
