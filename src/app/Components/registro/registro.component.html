@@ -1,43 +1,56 @@
-<div class="form-container">
-  <h1>Registrarme</h1>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
-      <label for="name">Nombre</label>
-      <input type="text" formControlName="name" placeholder="Ingresa tu nombre">
-      <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)">
-          <span class="error-message">El campo nombre es obligatorio.</span>
+<!-- component -->
+<div
+  class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"
+>
+  <div class="relative py-3 sm:w-96 mx-auto text-center">
+    <span class="text-2xl font-light">Ingresa tus datos</span>
+    <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+      <div class="h-2 bg-purple-400 rounded-t-md"></div>
+      <div class="px-8 py-6">
+        <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+          <label class="block font-semibold"> Email </label>
+          <input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+
+          <label class="block mt-3 font-semibold"> Password </label>
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+
+          <label class="block mt-3 font-semibold"> Nombre </label>
+          <input
+            type="text"
+            placeholder="Abelardo"
+            formControlName="name"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+
+          <label class="block mt-3 font-semibold"> Apellido Paterno </label>
+          <input
+            type="text"
+            placeholder="Garcia"
+            formControlName="ap_paterno"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+
+          <div class="flex justify-between items-baseline">
+            <button
+              type="submit"
+              class="mt-4 bg-purple-500 text-white py-2 px-6 rounded-md hover:bg-purple-600"
+            >
+              Registrar
+            </button>
+            <!--<a href="#" class="text-sm hover:underline">Forgot password?</a>-->
+          </div>
+        </form>
       </div>
-      <label for="ap_paterno">Apellido paterno</label>
-      <input type="text" formControlName="ap_paterno" placeholder="Ingresa tu apellido paterno">
-      <div *ngIf="registerForm.get('ap_paterno')?.invalid && (registerForm.get('ap_paterno')?.touched || registerForm.get('ap_paterno')?.dirty)">
-          <span class="error-message">El campo apellido paterno es obligatorio.</span>
-      </div>
-      <label for="ap_materno">Apellido materno</label>
-      <input type="text" formControlName="ap_materno" placeholder="Ingresa tu apellido materno">
-      <div *ngIf="registerForm.get('ap_materno')?.invalid && (registerForm.get('ap_materno')?.touched || registerForm.get('ap_materno')?.dirty)">
-          <span class="error-message">El campo apellido materno es obligatorio.</span>
-      </div>
-      <label for="email">Correo electrónico</label>
-      <input type="email" formControlName="email" placeholder="Ingresa tu correo electrónico">
-      <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)">
-          <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
-          <span class="error-message" *ngIf="registerForm.get('email')?.errors?.['email']">El campo correo electrónico debe ser un correo electrónico válido.</span>
-      </div>
-      <label for="password">Contraseña</label>
-      <input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
-      <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)">
-          <span class="error-message" *ngIf="registerForm.get('password')?.errors?.['required']">El campo contraseña es obligatorio.</span>
-          <span class="error-message" *ngIf="registerForm.get('password')?.errors?.['minlength']">El campo contraseña debe tener al menos 8 caracteres.</span>
-      </div>
-      <label for="password_confirmation">Confirmar contraseña</label>
-      <input type="password" formControlName="password_confirmation" placeholder="Repite tu contraseña">
-      <div *ngIf="registerForm.get('password_confirmation')?.invalid && (registerForm.get('password_confirmation')?.touched || registerForm.get('password_confirmation')?.dirty)">
-          <span class="error-message" *ngIf="registerForm.get('password_confirmation')?.errors?.['required']">El campo confirmar contraseña es obligatorio.</span>
-          <span class="error-message" *ngIf="registerForm.get('password_confirmation')?.errors?.['minlength']">El campo confirmar contraseña debe tener al menos 8 caracteres.</span>
-      </div>
-      <div *ngIf="registerForm.get('password')?.value !== registerForm.get('password_confirmation')?.value">
-          <span class="error-message">Las contraseñas no coinciden.</span>
-      </div>
-      <button type="submit" class="primary-button" [disabled]="!registerForm.valid">Registrarme</button>
-      <p class="mt-2">¿Ya tienes una cuenta? <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Inicia sesión.</a></p>
-  </form>
+    </div>
+  </div>
 </div>

@@ -1,20 +1,44 @@
+<!-- component -->
+<!-- This is an example component -->
+<div class="h-screen font-sans login bg-cover">
+  <div class="container mx-auto h-full flex flex-1 justify-center items-center">
+      <div class="w-full max-w-lg">
+        <div class="leading-loose">
+          <form  [formGroup]="form" (ngSubmit)="OnSubmit(form.value)" class="max-w-sm m-4 p-10 bg-white bg-opacity-25 rounded shadow-xl">
+              <p class="text-black text-center text-lg ">LOGIN</p>
+                <div class="">
+                  <label class="block text-sm text-black" for="email">E-mail</label>
+                  <input formControlName="email" class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white" type="email" id="email"  placeholder="Ingresa tu email" aria-label="email" required>
+                </div>
+                <div class="mt-2">
+                  <label class="block  text-sm text-black">Password</label>
+                   <input formControlName="password" class="w-full px-5 py-1 text-gray-700 bg-gray-300 rounded focus:outline-none focus:bg-white"
+                    type="password" id="password" placeholder="Ingresa tu contraseña" arial-label="password" required>
+                </div>
 
-<div class="form-container">
-    <h1>Iniciar sesión</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-        <label for="email">Correo electrónico</label>
-        <input type="email" formControlName="email" placeholder="Ingresa tu correo electrónico">
-        <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)">
-            <span class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">El campo correo electrónico es obligatorio.</span>
-            <span class="error-message" *ngIf="loginForm.get('email')?.errors?.['email']">El campo correo electrónico debe ser un correo electrónico válido.</span>
+                <div class="mt-4 items-center flex justify-between">
+                  <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded"
+                    type="submit">Iniciar</button>
+                </div>
+                <div class="text-center" routerLink="/registro" routerLinkActive="active" ariaCurrentWhenActive="page">
+                  <a class="inline-block right-0 align-baseline font-light text-sm text-500 hover:text-red-400">
+                      Crear una cuenta
+                  </a>
+                </div>
+
+          </form>
+
         </div>
-        <label for="password">Contraseña</label>
-        <input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
-        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
-            <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">El campo contraseña es obligatorio.</span>
-            <span class="error-message" *ngIf="loginForm.get('password')?.errors?.['minlength']">El campo contraseña debe tener al menos 8 caracteres.</span>
-        </div>
-        <button type="submit" class="primary-button" [disabled]="!loginForm.valid">Iniciar sesión</button>
-        <p class="mt-2">¿No tienes una cuenta? <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Regístrate.</a></p>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .login{
+    /*
+      background: url('https://tailwindadmin.netlify.app/dist/images/login-new.jpeg');
+    */
+    background: url('http://bit.ly/2gPLxZ4');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  </style>

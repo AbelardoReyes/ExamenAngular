@@ -1,12 +1,19 @@
 @keyframes move-boat {
   0% {
-    transform: translateX(0);
+    transform: translateX(-10vw);
   }
   100% {
-    transform: translateX(100vw);
+    transform: translateX(94vw);
   }
 }
 
 img {
-  animation: move-boat 10s linear infinite;
+  animation: move-boat 1s linear infinite;
+}
+
+.flex-barco {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  height: 85vh;
 }

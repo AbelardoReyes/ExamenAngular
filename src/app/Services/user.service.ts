@@ -3,16 +3,16 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
-import { User } from '../Interfaces/user.interface';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private registerUrl = environment.apiUrl + '/register';
-  private loginUrl = environment.apiUrl + '/login';
-  private getUserUrl = environment.apiUrl + '/user';
-  private logoutUrl = environment.apiUrl + '/logout';
+  private registerUrl = environment.apiUrl + '/usuario/registrar';
+  private logearUsuario = environment.apiUrl + '/usuario/login';
+  private getUserUrl = environment.apiUrl + '/usuario/monitores';
+  private logoutUrl = environment.apiUrl + '/usuario/logout';
 
   private userLoggedIn = new Subject<boolean>();
 
@@ -26,13 +26,7 @@ export class UserService {
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>(this.loginUrl, user)
-      .pipe(
-        tap(() => {
-          this.userLoggedIn.next(true);
-        }),
-        catchError(this.handleError)
-      );
+    return this.http.post<User>(this.logearUsuario, user).pipe(catchError(this.handleError));
   }
 
   getUser(id: number): Observable<User> {
