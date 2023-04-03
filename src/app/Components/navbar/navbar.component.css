@@ -1,0 +1,38 @@
+@keyframes move-boat {
+  0% {
+    transform: translateX(-35vw);
+  }
+  100% {
+    transform: translateX(82vw);
+  }
+}
+
+.pausar {
+  animation-play-state: var(--animationState);
+}
+
+.start {
+  animation-play-state: var(--animationState);
+}
+
+img {
+  animation: move-boat 5s linear infinite;
+  animation-play-state: paused;
+}
+
+img.running{
+  animation-play-state: paused;
+}
+
+.flex-barco {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  height: 85vh;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1610393144490-a930182ad2f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGFpc2FqZSUyMGRlJTIwbWFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

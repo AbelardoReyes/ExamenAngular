@@ -1,14 +1,23 @@
 @keyframes move-boat {
   0% {
-    transform: translateX(-25vw);
+    transform: translateX(-35vw);
   }
   100% {
     transform: translateX(82vw);
   }
 }
 
+.pausar {
+  animation-play-state: paused;
+}
+
+.start {
+  animation-play-state: running;
+}
+
 img {
   animation: move-boat 5s linear infinite;
+  animation-play-state: paused;
 }
 
 .flex-barco {
